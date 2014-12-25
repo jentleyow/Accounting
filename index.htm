@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>myAccounting</title>
+<script src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/index.css" />
+<link rel="stylesheet" href="css/pnotify.custom.min.css" />
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/pnotify.custom.min.js"></script>
+<link rel="icon" 
+      type="image/png" 
+      href="img/favicon.ico">
+      <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron" id="loginBox">
+    <table id="logintable">
+    <tr><td id="welcomeText"> Welcome to <em>myAccounting</em></td></tr>
+    <tr><td class="spacer"><input type="text" class="form-control"  placeholder="Your username" maxlength="25" id="username"></td></tr>
+    <tr><td class="spacer"><input type="password" class="form-control"  placeholder="Your password" maxlength="25" id="password"></td></tr>
+    <tr><td><button type="button" class="btn btn-primary buttonsize" onclick="Login()">Login</button></td></tr>
+    <tr><td id="or">or</td></tr>
+    <tr><td><button type="button" class="btn btn-default buttonsize" id="register" onClick="SelectRegister()">Register new account</button></td></tr>
+    </table>
+</div>
+<div class="jumbotron" id="createBox">
+    <table id="logintable">
+    <tr><td id="instructionText" > Enter your username, password & full name to create account.</td></tr>
+    <tr><td>
+    <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Your username" id="newUsername" maxlength="25" onkeyup="returnUsernameLength()">
+  <span class="form-control-feedback" aria-hidden="true" id="usernameLength">25</span>
+</div>
+</td></tr>
+    <tr><td>
+    <div class="form-group has-feedback">
+    <input type="password" class="form-control"  placeholder="Your password" maxlength="25" id="newPassword" onkeyup="returnPasswordLength()">
+     <span class="form-control-feedback" aria-hidden="true" id="passwordLength">25</span>
+    </div>
+    </td></tr>
+    <tr><td>
+    <div class="form-group has-feedback">
+        <input type="text" class="form-control"  placeholder="Your full name" maxlength="30" id="newFullName" onkeyup="returnFullNameLength()">
+    <span class="form-control-feedback" aria-hidden="true" id="fullNameLength">30</span>
+    </div>
+    </td></tr>
+    <tr><td><button type="button" class="btn btn-primary buttonsize" id="confirm" onClick="createAccount()">Confirm</button></td></tr>
+    <tr><td id="or">or</td></tr>
+    <tr><td><button type="button" class="btn btn-default buttonsize" id="back" onClick="SelectBack()">Back</button></td></tr>
+    </table>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<?php
+session_start();
+if (isset($_SESSION["user"])!= true){
+    header("Location: http://albm/");
+die();
+}else{
+    
+}
+?>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My Dashboard</title>
+<script src="../js/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/Dashboard.css" />
+<link rel="stylesheet" href="../css/pnotify.custom.min.css" />
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrapValidator.min.js"></script>
+<script src="../js/pnotify.custom.min.js"></script>
+<script src="../js/Dashboard.js"></script>
+<link rel="icon" 
+      type="image/png" 
+      href="../img/favicon.ico">
+      <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <div id="top">
+            <button type="button" class="btn btn-primary buttonsize"  onClick="showCreateSet()" id="createSet"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create new set</button>
+            <button id="logOff" type="button" class="btn btn-primary buttonsize pull-right" onClick="logOff()">Log Off</button>
+        </div>
+           
+            <div class="panel panel-primary" id="middle">
+                <div class="panel-heading">
+    <h2 class="panel-title">My Sets</h2>
+  </div>
+            <div class="panel-body" id="middletable">
+                <table class="table table-bordered table-striped" id="tblSet">
+                   
+                </table>
+            </div>
+          </div> 
+
+            </div>
+        <!--black screen-->
+        
+        <div id="blackscreen" onclick="hideBlackScreen()">
+            
+        </div>
+               <div class="panel panel-default" id="newSetPanel">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Add new set</div>
+  <div class="panel-body">
+            <form id="notEmptyForm" class="form-horizontal"><div class="form-group"><input type="text" class="form-control" name="fullName" placeholder="New set name" id="newSet" maxlength="25">
+                </div></form>
+    <button type="button" class="btn btn-primary buttonsize pull-right" onClick="createSet()">Confirm</button>
+    
+  </div></div>
+    </div>
+    
+</body>
+</html>

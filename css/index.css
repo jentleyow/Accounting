@@ -1,0 +1,70 @@
+html {
+    height:100%;
+}
+body{
+font-family: 'Raleway', sans-serif;
+background: #a7cfdf; /* Old browsers */
+background: -moz-linear-gradient(top,  #a7cfdf 0%, #23538a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a7cfdf), color-stop(100%,#23538a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #a7cfdf 0%,#23538a 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 ); /* IE6-9 */
+
+
+}
+#loginBox{
+ bottom: 0; left: 0; top: 0; right: 0;
+    margin: auto;
+    position: absolute;
+    width: 400px;
+    height: 300px;
+	font-size:15pt;
+}
+#welcomeText{
+	padding-bottom:10px;
+	}
+#password{
+padding-bottom:10px;
+}
+.buttonsize{
+width:300px;
+}
+.spacer{
+	padding-bottom:10px;
+}
+#or{
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align:center;
+	font-size:0.7em;
+}
+/* Create account*/
+#createBox{
+ bottom: 0; left: 0; top: 0; right: 0;
+    margin: auto;
+    position: absolute;
+    width: 400px;
+    height: 360px;
+	font-size:15pt;
+}
+#instructionText{
+	padding-bottom:10px;
+	font-size:0.75em;
+	}
+	#usernameLength{
+	color:#cccccc;
+	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size:0.8em;
+	}
+	#passwordLength{
+	color:#cccccc;
+	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size:0.8em;
+	}
+	#fullNameLength{
+	color:#cccccc;
+	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size:0.8em;
+	}
