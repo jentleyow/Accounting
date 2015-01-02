@@ -1,231 +1,70 @@
-﻿
-2014-12-22 10:02:35->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
+
+2014-12-29 09:55:52->exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in C:\wamp\www\Accounting\php\db\db.php:47
 Stack trace:
 #0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:28:23->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:28:34->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:29:25->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:29:25->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:29:26->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:29:26->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:32:15->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:44:39->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:54:39->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:57:02->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:59:13->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:59:14->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:59:15->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:59:15->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:59:16->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:59:17->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:59:17->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 10:59:35->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 11:00:05->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 11:00:06->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 11:00:08->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-22 11:00:17->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:35:14->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:35:35->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:47:20->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:48:27->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:48:28->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:48:40->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:48:57->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:48:58->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-23 02:48:58->exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'accounting.invoice' doesn't exist' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
-#2 C:\wamp\www\Accounting\php\db\dbSet.php(84): DB->resultset()
-#3 C:\wamp\www\Accounting\php\set\set.php(29): DbSet->getInvoice('9', '1', Array)
-#4 {main}
-2014-12-24 03:15:35->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ledgerid' in 'where clause'' in C:\wamp\www\Accounting\php\db\db.php:47
-Stack trace:
-#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
-#1 C:\wamp\www\Accounting\php\db\dbSet.php(120): DB->execute()
-#2 C:\wamp\www\Accounting\php\set\set.php(61): DbSet->removeLedger('7')
+#1 C:\wamp\www\Accounting\php\db\dbSet.php(318): DB->execute()
+#2 C:\wamp\www\Accounting\php\set\set.php(114): DbSet->saveField('11', 'dsdf', 'ledgerinvoiceno')
 #3 {main}
+2014-12-29 10:17:38->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'infoid' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\dbSet.php(345): DB->execute()
+#2 C:\wamp\www\Accounting\php\set\set.php(114): DbSet->saveField('11', '', 'ledgerdropdown')
+#3 {main}
+2014-12-29 10:18:01->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'infoid' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\dbSet.php(345): DB->execute()
+#2 C:\wamp\www\Accounting\php\set\set.php(114): DbSet->saveField('11', '', 'ledgerdropdown')
+#3 {main}
+2014-12-29 10:19:32->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'infoid' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\dbSet.php(345): DB->execute()
+#2 C:\wamp\www\Accounting\php\set\set.php(114): DbSet->saveField('11', '', 'ledgerdropdown')
+#3 {main}
+2014-12-29 10:42:09->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'infoid' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\dbSet.php(345): DB->execute()
+#2 C:\wamp\www\Accounting\php\set\set.php(114): DbSet->saveField('11', '2', 'ledgerdropdown')
+#3 {main}
+2014-12-29 10:42:10->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'infoid' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\dbSet.php(345): DB->execute()
+#2 C:\wamp\www\Accounting\php\set\set.php(114): DbSet->saveField('11', '2', 'ledgerdropdown')
+#3 {main}
+2014-12-29 10:42:52->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'infoid' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\dbSet.php(345): DB->execute()
+#2 C:\wamp\www\Accounting\php\set\set.php(114): DbSet->saveField('11', '1', 'ledgerdropdown')
+#3 {main}
+2014-12-29 10:43:02->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'infoid' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\dbSet.php(345): DB->execute()
+#2 C:\wamp\www\Accounting\php\set\set.php(114): DbSet->saveField('20', '2', 'ledgerdropdown')
+#3 {main}
+2014-12-30 05:18:20->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'debit' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
+#2 C:\wamp\www\Accounting\php\db\dbSet.php(292): DB->resultset()
+#3 C:\wamp\www\Accounting\php\set\set.php(99): DbSet->returnAllLedgeTable('13', Array)
+#4 {main}
+2014-12-30 05:18:22->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'debit' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
+#2 C:\wamp\www\Accounting\php\db\dbSet.php(292): DB->resultset()
+#3 C:\wamp\www\Accounting\php\set\set.php(99): DbSet->returnAllLedgeTable('13', Array)
+#4 {main}
+2014-12-30 05:19:13->exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'debit' in 'field list'' in C:\wamp\www\Accounting\php\db\db.php:47
+Stack trace:
+#0 C:\wamp\www\Accounting\php\db\db.php(47): PDOStatement->execute()
+#1 C:\wamp\www\Accounting\php\db\db.php(50): DB->execute()
+#2 C:\wamp\www\Accounting\php\db\dbSet.php(292): DB->resultset()
+#3 C:\wamp\www\Accounting\php\set\set.php(99): DbSet->returnAllLedgeTable('13', Array)
+#4 {main}

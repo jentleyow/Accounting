@@ -8,7 +8,12 @@ if (isset($_POST["action"])){
 }else if ($_POST["action"]=="login"){
     $DbUser = new DbUser();
     $code = $DbUser->login($_POST["username"], $_POST["password"]);
-    echo $code;
+    if ($code == 1){
+        echo "html/Dashboard.htm";
+    }else{
+        
+        echo $code;
+    }
 }
 }
 

@@ -5,8 +5,8 @@ class DB {
 
     //private $log;
     private $dbh;
-    private $username = "accounting";
-    private $password = "CGg-3{#>x8vh<j/";
+    private $username = "user";
+    private $password = "34Q7(K!B(<2D75x";
     private $db = "accounting";
     private $stmt;
 

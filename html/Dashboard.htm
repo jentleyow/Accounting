@@ -1,67 +1,84 @@
 <?php
 session_start();
-if (isset($_SESSION["user"])!= true){
-    header("Location: http://albm/");
+if (isset($_SESSION["user"])== false){
+header("Location: ".$_SERVER["DOCUMENT_ROOT"] . "accounting/index.htm");
 die();
 }else{
-    
 }
 ?>
 
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>My Dashboard</title>
-<script src="../js/jquery.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/Dashboard.css" />
-<link rel="stylesheet" href="../css/pnotify.custom.min.css" />
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrapValidator.min.js"></script>
-<script src="../js/pnotify.custom.min.js"></script>
-<script src="../js/Dashboard.js"></script>
-<link rel="icon" 
-      type="image/png" 
-      href="../img/favicon.ico">
-      <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-</head>
-<body>
-    <div class="container">
-        <div class="dashboard">
-            <div id="top">
-            <button type="button" class="btn btn-primary buttonsize"  onClick="showCreateSet()" id="createSet"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create new set</button>
-            <button id="logOff" type="button" class="btn btn-primary buttonsize pull-right" onClick="logOff()">Log Off</button>
-        </div>
-           
-            <div class="panel panel-primary" id="middle">
-                <div class="panel-heading">
-    <h2 class="panel-title">My Sets</h2>
-  </div>
-            <div class="panel-body" id="middletable">
-                <table class="table table-bordered table-striped" id="tblSet">
-                   
-                </table>
-            </div>
-          </div> 
+    <head>
+        <meta charset="utf-8">
+        <title>My Dashboard</title>
+        <script src="../js/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/Dashboard.css" />
+        <link rel="stylesheet" href="../css/pnotify.custom.min.css" />
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrapValidator.min.js"></script>
+        <script src="../js/pnotify.custom.min.js"></script>
+        <script src="../js/Dashboard.js"></script>
+        <link rel="icon" 
+              type="image/png" 
+              href="../img/favicon.ico">
+        <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="container">
+            <div class="dashboard">
+                <div id="top">
+                    <button type="button" class="btn btn-primary buttonsize"  onClick="showCreateSet()" id="createSet"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create new set</button>
+                    <button id="logOff" type="button" class="btn btn-primary buttonsize pull-right" onClick="logOff()">Log Off</button>
+                </div>
+
+                <div class="panel panel-primary" id="middle">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">My Sets</h2><button type="button" id="btnRefresh" class="btn btn-primary buttonsize pull-right bluebtn" onClick="returnAllSet()">Refresh</button>
+                    </div>
+                    <div class="panel-body" id="middletable">
+                        <table class="table table-bordered table-striped" id="tblSet">
+
+                        </table>
+                    </div>
+                </div> 
 
             </div>
-        <!--black screen-->
-        
-        <div id="blackscreen" onclick="hideBlackScreen()">
-            
+            <!--black screen-->
+
+            <div id="blackscreen" onclick="hideBlackScreen()">
+
+            </div>
+            <div class="panel panel-default" id="newSetPanel">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Add new set</div>
+                <div class="panel-body">
+                    <form id="notEmptyForm" class="form-horizontal"><div class="form-group"><input type="text" class="form-control" name="fullName" placeholder="New set name" id="newSet" maxlength="25" />
+                        </div></form>
+                    <button type="button" class="btn btn-primary buttonsize pull-right" onClick="createSet()">Confirm</button>
+
+                </div></div>
+            <div class="panel panel-default" id="shareSetPanel">
+                <div class="panel-heading">Share/unshare this set</div>
+                <div class="panel-body">
+                    <form  class="form-horizontal">
+                        <div class="form-group">
+                            Share/unshare this set with:
+                             </div>
+                        <div class="form-group"><input type="text" class="form-control" name="fullName" placeholder="Username" id="txtShareSet" maxlength="25" /></div>
+                        <div class="pull-right"><button type="button" class="btn btn-success " onclick="shareSet(0)">Share</button> <button type="button" class="btn btn-danger " onclick="shareSet(1)">Unshare</button></div>
+                        
+                    </form>
+                    
+
+
+
+
+                </div>
+            </div>
         </div>
-               <div class="panel panel-default" id="newSetPanel">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Add new set</div>
-  <div class="panel-body">
-            <form id="notEmptyForm" class="form-horizontal"><div class="form-group"><input type="text" class="form-control" name="fullName" placeholder="New set name" id="newSet" maxlength="25">
-                </div></form>
-    <button type="button" class="btn btn-primary buttonsize pull-right" onClick="createSet()">Confirm</button>
-    
-  </div></div>
-    </div>
-    
-</body>
+
+    </body>
 </html>

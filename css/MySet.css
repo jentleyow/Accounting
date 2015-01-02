@@ -7,27 +7,22 @@ a,.cursor{
 
 #sidebar-wrapper::-webkit-scrollbar-track
 {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
 }
 
 #sidebar-wrapper::-webkit-scrollbar
 {
-    width: 10px;
-    background-color: #F5F5F5;
+	width: 12px;
+	background-color: #F5F5F5;
 }
 
 #sidebar-wrapper::-webkit-scrollbar-thumb
 {
-    background-color: #F90;	
-    background-image: -webkit-linear-gradient(45deg,
-        rgba(255, 255, 255, .2) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, .2) 50%,
-        rgba(255, 255, 255, .2) 75%,
-        transparent 75%,
-        transparent)
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
 }
 
 body{
@@ -125,6 +120,14 @@ body{
     overflow:auto;
     font-size:0.8em;
 }
+.underline-bold-is{//for header in income statement only
+    font-weight: bold;
+    text-decoration: underline;
+    font-size:1.3em;
+}
+#revenueTbl{
+    
+}
 #tbl{
     padding:0px;
 }
@@ -140,6 +143,7 @@ body{
 #tbl td{
     padding:0px;
     margin:0px;
+    font-family: Arial;
 }
 #tbl input[type='text']
 {
@@ -160,7 +164,7 @@ padding:0px;
 #divRow{
     position: relative;
     left:780px;
-    top:-20px;
+    top:10px;
     width:150px;
 
 }
@@ -183,6 +187,12 @@ padding:0px;
 #btnManageCompany{
     position: relative;
     top:-8px;
+    height: 30px;
+}
+#btnRefresh{
+    position: relative;
+    top:-8px;
+    left:-5px;
     height: 30px;
 }
 #companyPanel::-webkit-scrollbar-track
@@ -218,27 +228,24 @@ padding:0px;
 }
 #txtCompanyName{
 }
+#txtYearEnded{
+    background-color: white;
+}
 #txtCompanyReg{
+    width:357px;
 }
 #btnUpdateCompanyInfo{
-    background: #499bea; /* Old browsers */
-background: -moz-linear-gradient(top,  #499bea 0%, #207ce5 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#499bea), color-stop(100%,#207ce5)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #499bea 0%,#207ce5 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 ); /* IE6-9 */
 }
 .bluebtn{
-        background: #499bea; /* Old browsers */
-background: -moz-linear-gradient(top,  #499bea 0%, #207ce5 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#499bea), color-stop(100%,#207ce5)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #499bea 0%,#207ce5 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 ); /* IE6-9 */
+background: #6db3f2; /* Old browsers */
+background: -moz-linear-gradient(top,  #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6db3f2), color-stop(50%,#54a3ee), color-stop(51%,#3690f0), color-stop(100%,#1e69de)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=0 ); /* IE6-9 */
+
 }
 #tblLedger th{
     text-align: center;

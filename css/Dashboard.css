@@ -104,15 +104,33 @@ right: 10px;
 #tblSet{
     margin: auto;
     width: 800px;
-
+    font-size: 0.8em;
 }
+#tblSet th,tr{
+    text-align: center;
+}
+
 
 .noWidth{ //adjust length for column No
     width: 10px;
 }
 .setName{
-    cursor: pointer;
-    color: blue;
+    width: 200px;
+    border:0;
+    background-color:transparent;
+}
+#btnRefresh{
+    position: relative;
+    top:-24px;
+    height: 30px;
+    background: #499bea; /* Old browsers */
+background: -moz-linear-gradient(top,  #499bea 0%, #207ce5 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#499bea), color-stop(100%,#207ce5)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #499bea 0%,#207ce5 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #499bea 0%,#207ce5 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 ); /* IE6-9 */
 }
 /* For black screen */
 #blackscreen{
@@ -132,5 +150,14 @@ right: 10px;
     width: 400px;
     height:  220px;
     font-size:15pt;
+    padding: 10px;
+}
+#shareSetPanel{
+     bottom: 0; left: 0; top: 0; right: 0;
+    margin: auto;
+    position: absolute;
+    width: 250px;
+    height:  200px;
+    font-size:1em;
     padding: 10px;
 }

@@ -1,8 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION["user"]) == false || isset($_SESSION["set"]) == false) {
-header("Location: http://albm/");
-die();
+
+ header("Location: ".$_SERVER["DOCUMENT_ROOT"] . "accounting/index.htm");
+    die();
 } else {
 // do nothing
 }
@@ -39,19 +40,29 @@ die();
                 <div class="panel panel-primary" id="main">
                     <div class="panel-heading">
                         <h2 class="panel-title">
-                            <span id="companyName">Company</span><button type="button" id="btnManageCompany" class="btn btn-primary buttonsize pull-right bluebtn" onClick="showCompanyPanel()">Manage company info & ledgers</button>
+                            <span id="companyName">Company</span><span id="titleType"></span>
+                            <span class="pull-right">
+                               <button type="button" id="btnRefresh" class="btn btn-primary buttonsize bluebtn" onClick="refresh()">Refresh</button><button type="button" id="btnManageCompany" class="btn btn-primary buttonsize bluebtn" onClick="showCompanyPanel()">Manage company info & ledgers</button> 
+                            </span>
                         </h2>
                     </div>
                     <div class="panel-body" >
                         <table class="table table-bordered " id="tbl">
                            
                             <tbody></tbody>
-                        </table></div>
+                        </table>
+                        <div id="divIncomeStatement">
+                            <div class="underline-bold-is">Revenue</div>
+                            <table id="revenueTbl">
+                                
+                            </table>
+                            <div class="underline-bold-is">Gross Profit</div>
+                        </div><!--Income statement Area-->
+                    </div>
                     <div class="panel-footer" id="mainFooter">
-                   Last saved: 5 minutes
                                         <div class="form-group " id="divRow">
                         <div class="input-group">
-                            <input id="txtRow" type="text" class="form-control" placeholder=""  maxlength="2" value="0"  />
+                            <input id="txtRow" type="text" class="form-control" placeholder=""  maxlength="1" value="0"  />
                           <div class="input-group-btn">
                               <button type="button" class="btn btn-primary bluebtn" onclick="addRow()">Add rows</button>
                           </div> 
@@ -72,14 +83,22 @@ die();
                     <div class="form-group">
                         <input id="txtCompanyName" type="text" class="form-control" placeholder="Company Name"  maxlength="50"  />
                         </div>
+                    <div class="form-inline" >
+                          <div class='input-group date' id="yearEnded">
+                              <input id="txtYearEnded" type="text" class="form-control" placeholder="Date ended" readonly data-date-format="DD-MM-YYYY" onchange="yearEndedChange()"  /> 
+                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                          </div>
+ 
                     <div class="form-group">
                         <div class="input-group">
                            <input id="txtCompanyReg" type="text" class="form-control" placeholder="Company Registration No."  maxlength="10"  />
                           <div class="input-group-btn">
-                              <button type="button" class="btn btn-primary" id="btnUpdateCompanyInfo" onclick="updateCompanyInfo()">Save info</button>
+                              <button type="button" class="btn btn-primary bluebtn" id="btnUpdateCompanyInfo" onclick="updateCompanyInfo()">Save info</button>
                           </div> 
                         </div>
+                    </div>  
                     </div>
+                    <br />
                         <table class="table table-bordered table-striped" id="tblLedger" >
                         <thead><tr>
                                 <th width="10%">No</th>
