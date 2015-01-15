@@ -3,6 +3,8 @@ $(document).ready(function () {
     $("#blackscreen").hide();
     $("#newSetPanel").hide();
     $("#shareSetPanel").hide();
+    $("#accountPanel").hide();
+    //$("#loadExcelPanel").hide();
     returnAllSet();
     $('#notEmptyForm').bootstrapValidator({
         feedbackIcons: {
@@ -35,6 +37,8 @@ function hideBlackScreen() {
     $("#blackscreen").fadeOut();
     $("#newSetPanel").fadeOut();
     $("#shareSetPanel").fadeOut();
+    $("#accountPanel").fadeOut();
+    $("#loadExcelPanel").fadeOut();
 }
 function logOff() {
     window.location.href = "../php/user/logoff.php";
@@ -51,6 +55,7 @@ function createSet() {
                 hideBlackScreen();
                 returnAllSet();
             } else {
+                alert(result);
                 ErrorAlert("Database Error.");
             }
         });
@@ -63,10 +68,10 @@ function returnAllSet() {
             ErrorAlert("Database Error");
         } else {
             var obj = $.parseJSON(result);
-            var html = '<thead><tr><th width="4%">No</th><th>Set Name</th><th>Last Modified</th><th colspan="3">Actions</th></tr></thead>';
+            var html = '<thead><tr><th width="6%">No</th><th>Set Name</th><th width="15%">Last Modified</th><th colspan="3" width="30%">Actions</th></tr></thead>';
             var i = 0, len = obj.length;
             for (i; i < len; i++) {
-                html += '<tr><td>' + (i + 1) + '</td><td><input id="s' + i + '" onblur="setBlur(this.id,' + obj[i].setid + ')" class="setName" type="text" value="' + obj[i].name + '" maxlength="25"/></td><td>' + obj[i].date + '</td><td><button type="button" class="btn btn-primary" onclick="setclick(' + obj[i].setid + ')">Modify</button></td><td><button type="button" class="btn btn-success" onclick="showShareSet(' + obj[i].setid + ')">Share/unshare</button></td><td><button type="button" class="btn btn-danger" onclick="removeSet(' + obj[i].setid + ')">Delete</button></td></tr>';
+                html += '<tr><td>' + (i + 1) + '</td><td><input id="s' + i + '" onblur="setBlur(this.id,' + obj[i].setid + ')" class="setName" type="text" value="' + obj[i].name + '" maxlength="25"/></td><td>' + obj[i].date + '</td><td><button type="button" class="btn btn-primary bluebtn" onclick="setclick(' + obj[i].setid + ')">Modify</button></td><td><button type="button" class="btn btn-success" onclick="showShareSet(' + obj[i].setid + ')">Share/unshare</button></td><td><button type="button" class="btn btn-danger" onclick="removeSet(' + obj[i].setid + ')">Delete</button></td></tr>';
             }
             $("#tblSet").html(html);
             SuccessAlert("Sets loaded.");
@@ -180,4 +185,36 @@ function shareSet(type) {
             });
         }
     }
+}
+function showManageAccount(){
+    $("#blackscreen").fadeIn();
+    $("#accountPanel").fadeIn();
+     $.post("../php/user/user.php", {action: 'getAccount'}, function (result) {
+         if (result ==="0"){
+             ErrorAlert("Unable to get account information.");
+         }else{
+             var obj = $.parseJSON(result);
+             $("#lblUsername").html(obj[0]["username"]);
+             $("#lblFullname").html(obj[0]["fullname"]);
+         }
+     });
+}
+function saveAccount(){
+    var password = $("#txtPassword").val().trim();
+    if (password ===""){
+         ErrorAlert("Password cannot be blank");
+    }else{
+         $.post("../php/user/user.php", {action: 'saveAccount', password:password}, function (result) {
+             if (result==="0"){
+                 ErrorAlert("Unable to save account information.");
+             }else{
+                 SuccessAlert("Account information has been updated.");
+             }
+         });
+    }
+}
+
+function showLoadExcelFile(){
+    $("#blackscreen").fadeIn();
+    $("#loadExcelPanel").fadeIn();
 }

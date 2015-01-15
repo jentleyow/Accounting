@@ -8,8 +8,73 @@ class DbSet {
         $code = 1;
         $database = new DB();
         try {
-            $database->query("INSERT INTO `accounting`.`set` (`name`, `date`) VALUES (:name, Now());");
+            $database->query("INSERT INTO `accounting`.`set` (`name`, `date`,`bankstatement`) VALUES (:name, Now(),:bankstatement);");
             $database->bind(":name", $setName);
+            $bankstatement = '{
+"bs":[
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+}
+]
+}';
+            $database->bind(":bankstatement", $bankstatement);
             $database->execute();
             $id = $database->lastInsertId();
             $database->query("SELECT `sets` FROM accounting.user WHERE uid = :uid");
@@ -45,7 +110,7 @@ class DbSet {
                     $sql .= "||`setid` = " . $sets[$i];
                 }
                 $sql = substr($sql, 2);  //remove "||" 
-                $database->query("SELECT `setid`,`name`,DATE_FORMAT(`date`,'%e-%m-%Y, %H:%i') date FROM `set` WHERE " . $sql . " ORDER BY `date` DESC");
+                $database->query("SELECT `setid`,`name`,IFNULL(DATE_FORMAT(`date`,'%d-%m-%Y, %H:%i'),'') date FROM `set` WHERE " . $sql . " ORDER BY `date` DESC");
                 $arr = $database->resultset();
             }
         } catch (Exception $ex) {
@@ -94,7 +159,7 @@ class DbSet {
         $code = 1;
         $database = new DB();
         try {
-            $database->query("DELETE FROM `accounting`.`set` WHERE `setid`=:id;DELETE FROM `accounting`.`ledger` WHERE `setid`=:id;");
+            $database->query("start transaction;DELETE FROM `accounting`.`set` WHERE `setid`=:id;DELETE FROM `accounting`.`ledger` WHERE `setid`=:id;DELETE FROM `accounting`.`balancesheet` WHERE `setid`=:id;DELETE FROM `accounting`.`ledger` WHERE `setid`=:id;DELETE FROM `accounting`.`ledgerinfo` WHERE `setid`=:id;");
             $database->bind(":id", $id);
             $database->execute();
             $database->query("SELECT uid,sets FROM accounting.user;");
@@ -107,10 +172,10 @@ class DbSet {
                     $arr = explode(",", $rows[$i]["sets"]);
                     $length = sizeof($arr);
                     for ($j = 0; $j < $length; $j++) {
-                        if ($arr[$j] === $id) {
+                        if ($arr[$j] == $id) {
                             unset($arr[$j]);
                             $output = implode(",", $arr);
-                            $database->query("UPDATE `accounting`.`user` SET `sets`=:sets WHERE `uid`=:uid;");
+                            $database->query("UPDATE `accounting`.`user` SET `sets`=:sets WHERE `uid`=:uid;Commit;");
                             $database->bind(":uid", $rows[$i]["uid"]);
                             $database->bind(":sets", $output);
                             $database->execute();
@@ -186,7 +251,7 @@ class DbSet {
         $code = 1;
         $database = new DB();
         try {
-            $database->query("SELECT companyname,regno,DATE_FORMAT(`yearended`,'%d-%m-%Y') yearended FROM accounting.`set` where setid=:set");
+            $database->query("SELECT companyname,regno,DATE_FORMAT(`yearstarted`,'%d-%m-%Y') yearstarted,DATE_FORMAT(`yearended`,'%d-%m-%Y') yearended FROM accounting.`set` where setid=:set");
             $database->bind(":set", $set);
             $arr = $database->resultset();
         } catch (Exception $ex) {
@@ -195,18 +260,23 @@ class DbSet {
         return $code;
     }
 
-    public function updateCompanyInfo($companyName, $regNo, $yearEnded, $set) {
+    public function updateCompanyInfo($companyName, $regNo,$yearStarted ,$yearEnded, $set) {
         $code = 1;
         $database = new DB();
         if ($regNo == "") {
             $regNo = null;
         }
         try {
-            $database->query("UPDATE `accounting`.`set` SET `companyname`=:companyName, `regno`=:regNo, `yearended`=:yearEnded WHERE `setid`=:set;");
+            $database->query("UPDATE `accounting`.`set` SET `companyname`=:companyName, `regno`=:regNo,`yearstarted`=:yearStarted, `yearended`=:yearEnded WHERE `setid`=:set;");
             $database->bind(":companyName", $companyName);
             $database->bind(":regNo", $regNo);
+            if ($yearStarted == "") {
+                $database->bind(":yearStarted", "");
+            } else {
+                $database->bind(":yearStarted", $this->formatDate($yearStarted));
+            }
             if ($yearEnded == "") {
-                $database->bind(":yearEnded", $yearEnded);
+                $database->bind(":yearEnded", "");
             } else {
                 $database->bind(":yearEnded", $this->formatDate($yearEnded));
             }
@@ -296,7 +366,7 @@ class DbSet {
             if ($ledgerinfoid != "0") {
                 $sql .= " && ledger.ledgerinfoid=:ledgerinfoid";
             }
-            $sql .= " ORDER BY date ASC";
+            $sql .= " ORDER BY ledger.date ASC";
             $database->query($sql);
             $database->bind(":set", $set);
             if ($ledgerinfoid != "0") {
@@ -366,6 +436,9 @@ class DbSet {
         }
         try {
             $database->query($sql);
+            if ($output==""){
+                $output = null;
+            }
             $database->bind(":output", $output);
             $database->bind(":id", $id);
             $database->execute();
@@ -375,13 +448,228 @@ class DbSet {
         return $code;
     }
 
-    function removeLedgerForTable($id) {
+    public function removeLedgerForTable($id) {
         $code = 1;
         $database = new DB();
         try {
             $database->query("DELETE FROM `accounting`.`ledger` WHERE `ledgerid`=:id;");
             $database->bind(":id", $id);
             $database->execute();
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+
+    public function generateIncomeStatement($set, &$arr) {
+        $code = 1;
+        $database = new DB();
+        try {
+            $database->query("SELECT SUM(IFNULL(l.`credit`,0))amount, i.`name` FROM ledger l, ledgerinfo i WHERE  i.`type` = '0' && l.`setid` = :set && l.`ledgerinfoid` = i.`ledgerinfoid` GROUP BY `name`;");
+            $database->bind(":set", $set);
+            $result = $database->resultset();
+            array_push($arr, $result);
+            $database->query("SELECT SUM(IFNULL(l.`debit`,0))amount, i.`name` FROM ledger l, ledgerinfo i WHERE  i.`type` = '1' && l.`setid` = :set && l.`ledgerinfoid` = i.`ledgerinfoid` GROUP BY `name`;");
+            $database->bind(":set", $set);
+            $result = $database->resultset();
+            array_push($arr, $result);
+            $database->query("SELECT SUM(IFNULL(l.`debit`,0))amount, i.`name` FROM ledger l, ledgerinfo i WHERE  i.`type` = '2' && l.`setid` = :set && l.`ledgerinfoid` = i.`ledgerinfoid` GROUP BY `name`;");
+            $database->bind(":set", $set);
+            $result = $database->resultset();
+            array_push($arr, $result);
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+
+    public function getYearEnded($set, &$date) {
+        $code = 1;
+        $database = new DB();
+        try {
+            $database->query("SELECT DATE_FORMAT(`yearended`,'%m-%Y') d FROM accounting.`set`WHERE `setid` = :set");
+            $database->bind(":set", $set);
+            $result = $database->resultset();
+            if ($result[0]["d"] == null) {
+                $date = "";
+            } else {
+                $date = $result[0]["d"];
+            }
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+
+    public function getBankStatement($set, &$result) {
+        $code = 1;
+        $database = new DB();
+        try {
+            $database->query("SELECT bankstatement FROM accounting.`set` WHERE `setid` = :set;");
+            $database->bind(":set", $set);
+            $result = $database->single();
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+
+    public function BankStatementProblem($set) {
+        $code = 1;
+        $database = new DB();
+        try {
+            $database->query("UPDATE `accounting`.`set` SET `bankstatement`=:bankstatement WHERE `setid`=:set;");
+            $database->bind(":set", $set);
+            $bankstatement = '{
+"bs":[
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+},
+{
+"a":0,
+"b":0,
+"c":0
+}
+]
+}';
+            $database->bind(":bankstatement", $bankstatement);
+            $database->execute();
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+
+    public function saveBankStatement($set, $json) {
+        $code = 1;
+        $database = new DB();
+        try {
+            $database->query("UPDATE `accounting`.`set` SET `bankstatement`=:json WHERE `setid`=:set;");
+            $database->bind(":set", $set);
+            $database->bind(":json", $json);
+            $database->execute();
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+    public function addBalanceSheetItem($set){
+        $code = 1;
+        $database = new DB();
+        try {
+            $database->query("INSERT INTO `accounting`.`balancesheet` (`item`, `amount`, `depreciation`, `type`, `setid`) VALUES ('New item', '0', '0', '0', :set);");
+            $database->bind(":set", $set);
+            $database->execute();
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+    public function getBalanceSheetTable($set,&$arr){
+        $code = 1;
+        $database = new DB();
+        try {
+            $database->query("SELECT `id`,`item`,`amount`,`depreciation`,`type` FROM accounting.balancesheet WHERE `setid` = :set ORDER BY `type`");
+            $database->bind(":set", $set);
+            $arr = $database->resultset();
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+    public function updateBalanceSheetItem($item,$amount,$depreciation,$type,$id){
+         $code = 1;
+        $database = new DB();
+        try {
+            $database->query("UPDATE `accounting`.`balancesheet` SET `item`=:item, `amount`=:amount, `depreciation`=:depreciation, `type`=:type WHERE `id`=:id");
+            $database->bind(":item", $item);
+            $database->bind(":amount", $amount);
+            $database->bind(":depreciation", $depreciation);
+            $database->bind(":type", $type);
+            $database->bind(":id", $id);
+            $database->execute();
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+    public function removeBalanceSheetItem($id){
+         $code = 1;
+        $database = new DB();
+        try {
+            $database->query("DELETE FROM `accounting`.`balancesheet` WHERE `id`=:id");
+            $database->bind(":id", $id);
+            $database->execute();
+        } catch (Exception $ex) {
+            $code = $database->writeError($ex);
+        }
+        return $code;
+    }
+    public function showGeneratedBalanceSheet($set,&$arr){
+        $code = 1;
+        $database = new DB();
+        try {
+            $database->query("SELECT `item`,`amount`,`depreciation`,`type` FROM accounting.balancesheet WHERE `setid` = :set ORDER BY `type`");
+            $database->bind(":set", $set);
+            $arr = $database->resultset();
+            $database->query("SELECT IFNULL((SELECT SUM(IFNULL(l.`credit`,0))amount FROM ledger l, ledgerinfo i WHERE  i.`type` = '0' && l.`setid` = :set && l.`ledgerinfoid` = i.`ledgerinfoid` ) - (SELECT SUM(IFNULL(l.`debit`,0))amount FROM ledger l, ledgerinfo i WHERE  i.`type` = '1' && l.`setid` = :set && l.`ledgerinfoid` = i.`ledgerinfoid`) - (
+SELECT SUM(IFNULL(l.`debit`,0))amount FROM ledger l, ledgerinfo i WHERE  i.`type` = '2' && l.`setid` = :set && l.`ledgerinfoid` = i.`ledgerinfoid` ),0) c");
+            $database->bind(":set", $set);
+            $row = $database->single();
+            $c = array("amount"=>$row["c"],"type"=>"5");
+            array_push($arr,$c); 
         } catch (Exception $ex) {
             $code = $database->writeError($ex);
         }

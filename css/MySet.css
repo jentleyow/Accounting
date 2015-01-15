@@ -26,7 +26,6 @@ a,.cursor{
 }
 
 body{
-    font-family: 'Raleway', sans-serif;
     background: #a7cfdf; /* Old browsers */
     background: -moz-linear-gradient(top,  #a7cfdf 0%, #23538a 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a7cfdf), color-stop(100%,#23538a)); /* Chrome,Safari4+ */
@@ -113,21 +112,14 @@ body{
 
 #main{
     position: relative;
-    top:-530px;
+    margin-top:-530px;
     left:220px;
     width:960px;
     max-height: 520px;
     overflow:auto;
     font-size:0.8em;
 }
-.underline-bold-is{//for header in income statement only
-    font-weight: bold;
-    text-decoration: underline;
-    font-size:1.3em;
-}
-#revenueTbl{
-    
-}
+
 #tbl{
     padding:0px;
 }
@@ -158,6 +150,76 @@ padding:0px;
    padding-bottom:0px;
    font-size:0.8em;
 }
+.strong-underline{
+    font-weight: bold;
+    text-decoration: underline;
+}
+#incomeStatementTbl th{
+    text-align: center;
+}
+#incomeStatementTbl td{
+    text-align: left;
+    padding-left: 30px;
+    border:none;
+}
+#incomeStatementTbl .center{
+    text-align: center;
+    padding-left: 0px;
+}
+#balanceSheetTbl th{
+    text-align:center;
+}
+
+
+#assettbl{
+ width:100%;
+ height:100%;
+ font-size: 1.1em;
+}
+#assettbl th{
+    font-size:1.2em;
+}
+#assettbl td,th{
+    padding:8px;
+}
+#libtbl{
+ width:100%;
+ height:100%;
+ font-size: 1.1em;
+}
+#libtbl th{
+    font-size:1.2em;
+}
+#libtbl td,th{
+    padding:8px;
+}
+.strong-underline-header{
+     font-weight: bold;
+    text-decoration: underline;
+    font-size:1.4em;
+}
+.bsTextbox{
+    width:100px;
+    border:0px;
+    text-align: center;
+    border-radius:0px;
+}
+
+.addbtn{
+    height:20px;
+    width:20px;
+    padding:0px;
+    border-radius: 20px;
+    font-size: 0.7em;
+    top:-3px;
+    left:5px;
+}
+.bsbtn{//for button in balance sheet
+    width:25px;
+    height:25px;
+    padding:0px;
+   
+}
 #mainFooter{
    
 }
@@ -171,6 +233,9 @@ padding:0px;
 #txtRow{
         font-size: 1.3em;
         text-align: center;
+}
+#divGenerate{
+    padding-left:30px;
 }
 /* For black screen */
 #blackscreen{
@@ -189,6 +254,7 @@ padding:0px;
     top:-8px;
     height: 30px;
 }
+
 #btnRefresh{
     position: relative;
     top:-8px;
@@ -228,11 +294,16 @@ padding:0px;
 }
 #txtCompanyName{
 }
+#txtYearStarted{
+   background-color: white;
+    width:167px; 
+}
 #txtYearEnded{
     background-color: white;
+    width:167px;
 }
 #txtCompanyReg{
-    width:357px;
+    width:139px;
 }
 #btnUpdateCompanyInfo{
 }
@@ -249,4 +320,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 }
 #tblLedger th{
     text-align: center;
+}
+#balancesheetPanel{
+    bottom: 0; left: 0; top: 0; right: 0;
+    margin: auto;
+    position: absolute;
+    width: 960px;
+    height:  500px;
+    font-size:15pt;
+    padding: 0px;
+     z-index:3;
+    overflow: auto;
+}
+#bstbl th{
+    text-align:center;
+    margin-left:10px;
+    font-size: 0.9em;
+}
+#balancesheetPanel::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+#balancesheetPanel::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#balancesheetPanel::-webkit-scrollbar-thumb
+{
+    background-color: #0ae;
+
+    background-image: -webkit-gradient(linear, 0 0, 0 100%,
+        color-stop(.5, rgba(255, 255, 255, .2)),
+        color-stop(.5, transparent), to(transparent));
 }

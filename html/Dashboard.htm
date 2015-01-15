@@ -6,7 +6,6 @@ die();
 }else{
 }
 ?>
-
 <!doctype html>
 <html>
     <head>
@@ -23,8 +22,7 @@ die();
         <script src="../js/Dashboard.js"></script>
         <link rel="icon" 
               type="image/png" 
-              href="../img/favicon.ico">
-        <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+              href="../img/favicon.ico" />
     </head>
     <body>
         <div class="container">
@@ -36,7 +34,7 @@ die();
 
                 <div class="panel panel-primary" id="middle">
                     <div class="panel-heading">
-                        <h2 class="panel-title">My Sets</h2><button type="button" id="btnRefresh" class="btn btn-primary buttonsize pull-right bluebtn" onClick="returnAllSet()">Refresh</button>
+                        <h2 class="panel-title">My Sets<span id="rightbuttons"><button onclick="showLoadExcelFile()" type="button" id="btnLoad" class="btn btn-primary buttonsize bluebtn">Load excel file</button><button type="button" id="btnManage" class="btn btn-primary buttonsize bluebtn" onclick="showManageAccount()">Manage Accounts</button><button type="button" id="btnRefresh" class="btn btn-primary bluebtn buttonsize"  onClick="returnAllSet()">Refresh</button></span></h2>
                     </div>
                     <div class="panel-body" id="middletable">
                         <table class="table table-bordered table-striped" id="tblSet">
@@ -47,9 +45,7 @@ die();
 
             </div>
             <!--black screen-->
-
             <div id="blackscreen" onclick="hideBlackScreen()">
-
             </div>
             <div class="panel panel-default" id="newSetPanel">
                 <!-- Default panel contents -->
@@ -66,18 +62,38 @@ die();
                     <form  class="form-horizontal">
                         <div class="form-group">
                             Share/unshare this set with:
-                             </div>
+                        </div>
                         <div class="form-group"><input type="text" class="form-control" name="fullName" placeholder="Username" id="txtShareSet" maxlength="25" /></div>
                         <div class="pull-right"><button type="button" class="btn btn-success " onclick="shareSet(0)">Share</button> <button type="button" class="btn btn-danger " onclick="shareSet(1)">Unshare</button></div>
-                        
+
                     </form>
-                    
+
 
 
 
 
                 </div>
             </div>
+            <div class="panel panel-default" id="accountPanel">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Manage accounts</div>
+                <div class="panel-body">
+                    <div class="form-group"><strong>Username:</strong> <span id="lblUsername"></span></div>
+                    <div class="form-group"><strong>Full name:</strong> <span id="lblFullname"></span></div>
+                    <div class="form-group"><input type="password" class="form-control" placeholder="New password" id="txtPassword" maxlength="25" /></div>
+
+                    <button type="button" class="btn btn-success pull-right" onclick="saveAccount()">Save Account</button>
+                </div></div>
+
+            <div class="panel panel-default" id="loadExcelPanel">
+                <!-- Default panel contents -->
+                <div class="panel-heading" >Load excel file</div>
+                <div class="panel-body">
+                    Select a excel file (.xlsx).<br /><br />
+                    <form method="post" enctype="multipart/form-data" action="" ><input type="file" name="spreadsheet" class="form-control"/><br />
+                        <input type="submit" name="submit" value="Upload" class="btn btn-success pull-right" />
+                    </form>
+                </div></div>
         </div>
 
     </body>

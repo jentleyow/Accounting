@@ -8,7 +8,6 @@ if (isset($_SESSION["user"]) == false || isset($_SESSION["set"]) == false) {
 // do nothing
 }
 ?>
-
 <!doctype html>
 <html>
     <head>
@@ -20,7 +19,6 @@ if (isset($_SESSION["user"]) == false || isset($_SESSION["set"]) == false) {
         <link rel="stylesheet" href="../css/simple-sidebar.css" />
         <link rel="stylesheet" href="../css/MySet.css" />
         <link rel="icon" type="image/png" href="../img/favicon.ico" />
-        <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css' />
         <script src="../js/jquery.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/moment.js" ></script>
@@ -47,21 +45,43 @@ if (isset($_SESSION["user"]) == false || isset($_SESSION["set"]) == false) {
                         </h2>
                     </div>
                     <div class="panel-body" >
+                        <div id="instructiontext">Select <strong>All ledgers</strong> to input respective ledgers. Click <strong>Add rows</strong> to add new ledgers item. Click manage company info & ledgers to modify the company information and add/modify ledgers. Click on <strong>Generate</strong> to download a excel copy of this set.</div>
                         <table class="table table-bordered " id="tbl">
                            
                             <tbody></tbody>
                         </table>
+                         <div id="divBalanceSheet">
+                             <table class="table table-bordered" id="balanceSheetTbl">
+                                 <thead><tr><th width="50%" colspan="2">Assets</th><th colspan="2">Liabilities & Equity</th></tr></thead>
+                                 <tbody>
+                                     <tr><td id="assettd" colspan="2"></td><td id="liabilitiestd" colspan="2"></td></tr>
+                                     <tr><td  width="30%">Total Assets</td><td id="assetAmt"></td><td width="30%">Total Liabilities & Equity</td><td id="libAmt"></td></tr>
+                                 </tbody>
+                                 <tfoot><tr><td colspan="4"> <button type="button" class="btn btn-primary bluebtn pull-right" onclick="loadBalanceSheetTable()">Edit balance sheet</button></td></tr></tfoot>
+                             </table>
+                        </div>
                         <div id="divIncomeStatement">
-                            <div class="underline-bold-is">Revenue</div>
-                            <table id="revenueTbl">
-                                
+                            <table id="incomeStatementTbl" class="table table-bordered">
                             </table>
-                            <div class="underline-bold-is">Gross Profit</div>
                         </div><!--Income statement Area-->
+                        <div id="divBankStatement">
+                        </div>
+                                <div id="divGenerate"> 
+                                    <div class="form-group form-inline">
+                                        <label class="control-label">Enter a name for the excel file &nbsp;&nbsp;</label>
+                        <div class="input-group ">
+                         <input type="text" class="form-control" placeholder="File name"  maxlength="50" id="txtFileName"/>
+                          <div class="input-group-btn">
+                              <button type="button" class="btn btn-primary bluebtn"  onclick="downloadFile()">Download File</button>
+                          </div> 
+                        </div>
+                    </div>  
+                            
+                        </div>
                     </div>
                     <div class="panel-footer" id="mainFooter">
                                         <div class="form-group " id="divRow">
-                        <div class="input-group">
+                        <div class="input-group" id="addRowDiv">
                             <input id="txtRow" type="text" class="form-control" placeholder=""  maxlength="1" value="0"  />
                           <div class="input-group-btn">
                               <button type="button" class="btn btn-primary bluebtn" onclick="addRow()">Add rows</button>
@@ -79,11 +99,15 @@ if (isset($_SESSION["user"]) == false || isset($_SESSION["set"]) == false) {
                         Modify company's information & ledgers
                     </h2>
                 </div>
-                <div class="panel-body" id="rInvoiceBody">
+                <div class="panel-body" >
                     <div class="form-group">
                         <input id="txtCompanyName" type="text" class="form-control" placeholder="Company Name"  maxlength="50"  />
                         </div>
                     <div class="form-inline" >
+                         <div class='input-group date' id="yearStarted">
+                              <input id="txtYearStarted" type="text" class="form-control" placeholder="Date started" readonly data-date-format="DD-MM-YYYY" onchange="yearEndedChange()"  /> 
+                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                          </div>
                           <div class='input-group date' id="yearEnded">
                               <input id="txtYearEnded" type="text" class="form-control" placeholder="Date ended" readonly data-date-format="DD-MM-YYYY" onchange="yearEndedChange()"  /> 
                              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -114,6 +138,28 @@ if (isset($_SESSION["user"]) == false || isset($_SESSION["set"]) == false) {
 
 
                 </div>
+            </div>
+            <div id="balancesheetPanel" class="panel panel-primary">
+                <div class="panel-heading">Edit balance sheet</div>
+                    <div class="panel-body" >
+                        <table class="table table-bordered table-striped" id="bstbl">
+                            <thead><tr>
+                                    <th width="4%">No</th>
+                                    <th>Item</th>
+                                    <th width="16%">Amount</th>
+                                    <th width="16%">Depreciation</th>
+                                    <th>Type</th>
+                                    <th width="15%" colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="balanceSheetTblBody">
+                                
+                            </tbody>
+                            <tfoot>
+                                <tr><td colspan="7"><button type="button" class="btn btn-primary bluebtn pull-right" onclick="addBalanceSheetItem()">Add</button></td></tr>
+                            </tfoot>
+                        </table>
+                    </div>
             </div>
         </div>
     </body>
